@@ -1,0 +1,40 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <div th:fragment="header-css">
+        <!-- this is header-css -->
+        <link rel="stylesheet" type="text/css" href="webjars/bootstrap/3.3.7/css/bootstrap.min.css" />
+        <link rel="stylesheet" th:href="@{/css/main.css}" href="../../css/main.css" />
+    </div>
+</head>
+<body>
+	<div th:fragment="header">
+		<div class="jumbotron text-center" style="margin-bottom:0; background-image: url('black.jpg');">
+			<h1>Chorna perluna</h1>
+			<p>Online shop</p>
+		</div>
+
+		<nav class="navbar navbar-expand-sm bg-dark navbar-dark sticky-top">
+			<a class="navbar-brand" th:href="@{/}">Home</a>
+			<button class="navbar-toggler" type="button" data-toggle="collapse"
+				data-target="#collapsibleNavbar">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="collapsibleNavbar">
+				<ul class="navbar-nav">
+					<th:block sec:authorize="!isAuthenticated()">
+						<li class="nav-item"><a class="nav-link"
+							th:href="@{/log/login}">Login(for employees)</a></li>
+					</th:block>
+
+					<th:block sec:authorize="isAuthenticated()">
+						<li class="nav-item"><a class="nav-link"
+							th:href="@{/employee/logout}">Logout</a></li>
+					</th:block>
+				</ul>
+			</div>
+		</nav>
+	</div>
+
+
+</body>
+</html>

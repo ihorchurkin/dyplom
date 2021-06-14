@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+  <title>Demo shop</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <style>
+  .fakeimg {
+    height: 200px;
+    background: #aaa;
+  }
+  </style>
+</head>
+<body>
+
+<th:block th:include="/_header"></th:block>
+<div class="d-flex mt-5 mb-5 ml-5">
+	<div class="flex-fill mr-5">
+		<img src="tefal_g2550472_images_20727573816.jpg" class="imgsize"
+			alt="">
+	</div>
+	<div class="container-fluid flex-fill">
+		<form th:method="POST" th:action="@{/stuff}" th:object="${product}" enctype="multipart/form-data">
+			<div class="form-group">
+				<label for="name">Name:</label> <input type="text" 
+					th:field="*{name}"
+					class="form-control" id="name" placeholder="Enter your name"
+					name="name">
+			</div>
+			<div class="form-group">
+				<label for="price">Price:</label> <input type="text" 
+					th:field="*{price}"
+					class="form-control" id="price" placeholder="Enter stuff price"
+					name="price">
+			</div>
+			<div class="form-group">
+				<label for="description">Description:</label> <input type="text"
+					class="form-control" id="description"
+					th:field="*{description}"
+					placeholder="Enter stuff description" name="description">
+			</div>
+			<div class="form-group">
+				<label for="img">Image:</label> <br> <input type="file"
+					th:field="*{fileData}"
+					id="img" name="img">
+			</div>
+			<button type="submit" class="btn btn-primary">Ok</button>
+		</form>
+	</div>
+
+</div>
+<th:block th:include="/_footer"></th:block>
+
+</body>
+</html>
